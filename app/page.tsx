@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
+import Script from "next/script";
 
 /**
  * Extract a YouTube video ID from various URL formats or a raw 11-char ID.
@@ -57,6 +58,17 @@ export default function Page() {
   const [videoId, setVideoId] = useState<string | null>(null);
   const [error, setError] = useState("");
   const [showResult, setShowResult] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = window.setTimeout(() => {
+      setIsLoading(false);
+    }, 3000);
+
+    return () => {
+      window.clearTimeout(timer);
+    };
+  }, []);
 
   const handleConvert = useCallback(() => {
     const id = extractVideoId(url);
@@ -80,6 +92,25 @@ export default function Page() {
 
   return (
     <div className="page-wrapper">
+      {isLoading && (
+        <div className="loading-strip" role="status" aria-live="polite">
+          <div className="loading-inner">
+            <div className="loading-spinner" aria-hidden="true" />
+            <div className="loading-text">
+              <p>Loading offers...</p>
+              <span>Thanks for supporting ytmp3</span>
+            </div>
+          </div>
+          <a
+            className="ad-smartlink"
+            href="https://www.profitablecpmratenetwork.com/h8k757y4?key=159f39ffe05442a48aa00fbdffa1ceb6"
+            target="_blank"
+            rel="sponsored noopener noreferrer"
+          >
+            Open sponsored offer
+          </a>
+        </div>
+      )}
       <main className="main-content">
         {/* ── Header ── */}
         <header className="header">
@@ -230,6 +261,60 @@ export default function Page() {
               </div>
             </div>
           )}
+        </section>
+
+        {/* ── Sponsored ── */}
+        <section className="ad-section" aria-label="Sponsored">
+          <div className="ad-grid">
+            <div className="ad-slot ad-native">
+              <Script
+                src="https://pl28702244.profitablecpmratenetwork.com/c1dc9d26856ee35e8ea0c0f2c30c9d24/invoke.js"
+                strategy="afterInteractive"
+                async
+                data-cfasync="false"
+              />
+              <div id="container-c1dc9d26856ee35e8ea0c0f2c30c9d24" />
+            </div>
+
+            <div className="ad-slot ad-banner ad-mobile">
+              <Script
+                id="ad-mobile-options"
+                strategy="afterInteractive"
+                dangerouslySetInnerHTML={{
+                  __html:
+                    "atOptions = { 'key' : '352af4bf96ca632607ba87f85cb12512', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };",
+                }}
+              />
+              <Script
+                src="https://www.highperformanceformat.com/352af4bf96ca632607ba87f85cb12512/invoke.js"
+                strategy="afterInteractive"
+              />
+            </div>
+
+            <div className="ad-slot ad-banner ad-desktop">
+              <Script
+                id="ad-desktop-options"
+                strategy="afterInteractive"
+                dangerouslySetInnerHTML={{
+                  __html:
+                    "atOptions = { 'key' : '5505681ad59437deb6dca6e80a3a1f50', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };",
+                }}
+              />
+              <Script
+                src="https://www.highperformanceformat.com/5505681ad59437deb6dca6e80a3a1f50/invoke.js"
+                strategy="afterInteractive"
+              />
+            </div>
+
+            <a
+              className="ad-smartlink"
+              href="https://www.profitablecpmratenetwork.com/h8k757y4?key=159f39ffe05442a48aa00fbdffa1ceb6"
+              target="_blank"
+              rel="sponsored noopener noreferrer"
+            >
+              Sponsored link
+            </a>
+          </div>
         </section>
 
         {/* ── How It Works ── */}

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, IBM_Plex_Mono } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 
 const displayFont = Inter({
@@ -140,7 +141,13 @@ export default function RootLayout({
           async
         />
       </head>
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        {children}
+        <Script
+          src="https://pl29316396.profitablecpmratenetwork.com/88/ac/a8/88aca8035e64349674dbbda4076ae986.js"
+          strategy="afterInteractive"
+        />
+      </body>
     </html>
   );
 }
