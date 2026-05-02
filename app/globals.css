@@ -43,6 +43,7 @@ body {
   font-family: var(--font-display), system-ui, -apple-system, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
 
 ::selection {
@@ -59,6 +60,7 @@ img { max-width: 100%; height: auto; display: block; }
   display: flex;
   flex-direction: column;
   background: linear-gradient(180deg, #fff 0%, #fafafa 100%);
+  overflow-x: hidden;
 }
 
 .main-content {
@@ -418,6 +420,8 @@ h1.brand span {
 
 .ad-slot iframe {
   max-width: 100%;
+  width: 100% !important;
+  display: block;
 }
 
 .ad-banner {
@@ -428,32 +432,26 @@ h1.brand span {
   min-height: 120px;
 }
 
+.ad-slot > div {
+  width: 100%;
+}
+
+@media (max-width: 767px) {
+  .ad-banner iframe {
+    height: 60px !important;
+  }
+
+  .ad-slot {
+    min-height: 60px;
+  }
+}
+
 .ad-mobile {
   display: block;
 }
 
 .ad-desktop {
   display: none;
-}
-
-.ad-smartlink {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 12px 16px;
-  border-radius: 999px;
-  background: #111827;
-  color: #fff;
-  font-size: 0.85rem;
-  font-weight: 700;
-  letter-spacing: 0.01em;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  box-shadow: var(--shadow-sm);
-}
-
-.ad-smartlink:hover {
-  transform: translateY(-1px);
-  box-shadow: var(--shadow-md);
 }
 
 @media (min-width: 768px) {
