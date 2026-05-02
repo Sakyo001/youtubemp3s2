@@ -60,6 +60,7 @@ export default function Page() {
   const [showResult, setShowResult] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [isMobile, setIsMobile] = useState(false);
+  const [adsReady, setAdsReady] = useState(false);
 
   useEffect(() => {
     const timer = window.setTimeout(() => {
@@ -77,6 +78,7 @@ export default function Page() {
 
     updateMatch();
     media.addEventListener("change", updateMatch);
+    setAdsReady(true);
 
     return () => {
       media.removeEventListener("change", updateMatch);
@@ -281,37 +283,38 @@ export default function Page() {
               <div id="container-c1dc9d26856ee35e8ea0c0f2c30c9d24" />
             </div>
 
-            {isMobile ? (
-              <div className="ad-slot ad-banner ad-mobile">
-                <Script
-                  id="ad-mobile-options"
-                  strategy="afterInteractive"
-                  dangerouslySetInnerHTML={{
-                    __html:
-                      "atOptions = { 'key' : '352af4bf96ca632607ba87f85cb12512', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };",
-                  }}
-                />
-                <Script
-                  src="https://www.highperformanceformat.com/352af4bf96ca632607ba87f85cb12512/invoke.js"
-                  strategy="afterInteractive"
-                />
-              </div>
-            ) : (
-              <div className="ad-slot ad-banner ad-desktop">
-                <Script
-                  id="ad-desktop-options"
-                  strategy="afterInteractive"
-                  dangerouslySetInnerHTML={{
-                    __html:
-                      "atOptions = { 'key' : '5505681ad59437deb6dca6e80a3a1f50', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };",
-                  }}
-                />
-                <Script
-                  src="https://www.highperformanceformat.com/5505681ad59437deb6dca6e80a3a1f50/invoke.js"
-                  strategy="afterInteractive"
-                />
-              </div>
-            )}
+            {adsReady &&
+              (isMobile ? (
+                <div className="ad-slot ad-banner ad-mobile">
+                  <Script
+                    id="ad-mobile-options"
+                    strategy="afterInteractive"
+                    dangerouslySetInnerHTML={{
+                      __html:
+                        "atOptions = { 'key' : '352af4bf96ca632607ba87f85cb12512', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };",
+                    }}
+                  />
+                  <Script
+                    src="https://www.highperformanceformat.com/352af4bf96ca632607ba87f85cb12512/invoke.js"
+                    strategy="afterInteractive"
+                  />
+                </div>
+              ) : (
+                <div className="ad-slot ad-banner ad-desktop">
+                  <Script
+                    id="ad-desktop-options"
+                    strategy="afterInteractive"
+                    dangerouslySetInnerHTML={{
+                      __html:
+                        "atOptions = { 'key' : '5505681ad59437deb6dca6e80a3a1f50', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };",
+                    }}
+                  />
+                  <Script
+                    src="https://www.highperformanceformat.com/5505681ad59437deb6dca6e80a3a1f50/invoke.js"
+                    strategy="afterInteractive"
+                  />
+                </div>
+              ))}
 
           </div>
         </section>
