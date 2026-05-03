@@ -345,7 +345,7 @@ h1.brand span {
   color: var(--accent);
 }
 
-/* ─── Ads ─── */
+/* ─── Loading ─── */
 .loading-strip {
   position: sticky;
   top: 0;
@@ -394,75 +394,7 @@ h1.brand span {
   to { transform: rotate(360deg); }
 }
 
-.ad-section {
-  width: 100%;
-}
-
-.ad-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 14px;
-  width: 100%;
-}
-
-.ad-slot {
-  width: 100%;
-  min-height: 70px;
-  border: 1px dashed var(--border);
-  border-radius: var(--radius-sm);
-  background: var(--bg-soft);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 10px;
-  overflow: hidden;
-}
-
-.ad-slot iframe {
-  max-width: 100%;
-  width: 100% !important;
-  display: block;
-}
-
-.ad-banner {
-  min-height: 70px;
-}
-
-.ad-native {
-  min-height: 120px;
-}
-
-.ad-slot > div {
-  width: 100%;
-}
-
-@media (max-width: 767px) {
-  .ad-banner iframe {
-    height: 60px !important;
-  }
-
-  .ad-slot {
-    min-height: 60px;
-  }
-}
-
-.ad-mobile {
-  display: block;
-}
-
-.ad-desktop {
-  display: none;
-}
-
 @media (min-width: 768px) {
-  .ad-mobile {
-    display: none;
-  }
-
-  .ad-desktop {
-    display: block;
-  }
-
   .loading-strip {
     padding: 12px 24px;
   }
