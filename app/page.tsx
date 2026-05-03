@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useCallback, useEffect } from "react";
-import Script from "next/script";
 
 /**
  * Extract a YouTube video ID from various URL formats or a raw 11-char ID.
@@ -59,8 +58,6 @@ export default function Page() {
   const [error, setError] = useState("");
   const [showResult, setShowResult] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
-  const [isMobile, setIsMobile] = useState(false);
-  const [adsReady, setAdsReady] = useState(false);
 
   useEffect(() => {
     const timer = window.setTimeout(() => {
@@ -69,19 +66,6 @@ export default function Page() {
 
     return () => {
       window.clearTimeout(timer);
-    };
-  }, []);
-
-  useEffect(() => {
-    const media = window.matchMedia("(max-width: 767px)");
-    const updateMatch = () => setIsMobile(media.matches);
-
-    updateMatch();
-    media.addEventListener("change", updateMatch);
-    setAdsReady(true);
-
-    return () => {
-      media.removeEventListener("change", updateMatch);
     };
   }, []);
 
@@ -270,54 +254,7 @@ export default function Page() {
           )}
         </section>
 
-        {/* ── Sponsored ── */}
-        <section className="ad-section" aria-label="Sponsored">
-          <div className="ad-grid">
-            <div className="ad-slot ad-native">
-              <Script
-                src="https://pl28702244.profitablecpmratenetwork.com/c1dc9d26856ee35e8ea0c0f2c30c9d24/invoke.js"
-                strategy="afterInteractive"
-                async
-                data-cfasync="false"
-              />
-              <div id="container-c1dc9d26856ee35e8ea0c0f2c30c9d24" />
-            </div>
 
-            {adsReady &&
-              (isMobile ? (
-                <div className="ad-slot ad-banner ad-mobile">
-                  <Script
-                    id="ad-mobile-options"
-                    strategy="afterInteractive"
-                    dangerouslySetInnerHTML={{
-                      __html:
-                        "atOptions = { 'key' : '352af4bf96ca632607ba87f85cb12512', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };",
-                    }}
-                  />
-                  <Script
-                    src="https://www.highperformanceformat.com/352af4bf96ca632607ba87f85cb12512/invoke.js"
-                    strategy="afterInteractive"
-                  />
-                </div>
-              ) : (
-                <div className="ad-slot ad-banner ad-desktop">
-                  <Script
-                    id="ad-desktop-options"
-                    strategy="afterInteractive"
-                    dangerouslySetInnerHTML={{
-                      __html:
-                        "atOptions = { 'key' : '5505681ad59437deb6dca6e80a3a1f50', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };",
-                    }}
-                  />
-                  <Script
-                    src="https://www.highperformanceformat.com/5505681ad59437deb6dca6e80a3a1f50/invoke.js"
-                    strategy="afterInteractive"
-                  />
-                </div>
-              ))}
-
-          </div>
-        </section>
 
         {/* ── How It Works ── */}
         <section className="info-section" id="how-to-convert-youtube-to-mp3">
